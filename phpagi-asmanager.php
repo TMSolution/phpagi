@@ -373,6 +373,21 @@
     {
       return $this->send_request('ChangeMontior', array('Channel'=>$channel, 'File'=>$file));
     }
+   
+   //        Action: Atxfer
+//        Channel: Agent/7001
+//        Context: atxfer
+//        Exten: a7002
+//        Priority: 1
+
+    function ATXfer($channel, $exten, $actionid = NULL)
+    {
+        $parameters = array('Channel' => $channel, /*'Context' => 'atxfer',*/ 'Exten' => $exten, 'Priority' => 1);
+        if ($actionid) {
+            $parameters['ActionID'] = $actionid;
+        }
+        return $this->send_request('Atxfer', $parameters);
+    }
 
    /**
     * Execute Command
